@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wayfinder | Emergency Route Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><a class="brand" href="#"><span class="brand-mark">✳</span><span>wayfinder<small>EMERGENCY ROUTING</small></span></a><div class="header-right"><span class="live-dot"></span><span id="api-status">CONNECTING TO NETWORK</span><span class="city">HYDERABAD, IN</span></div></header>
+<main><aside class="panel"><div class="eyebrow">RESPONSE PLANNING <span>● LIVE MAP</span></div><h1>Find the<br><em>fastest way.</em></h1><p class="intro">Plan an emergency route across Hyderabad’s real street network.</p>
+<section class="form-section"><label class="field-label">STARTING POINT</label><div class="location-field"><span class="pin start-pin">●</span><input id="start" value="Charminar, Hyderabad" autocomplete="off"><button class="locate" id="locate" title="Use my location">◎</button></div><label class="field-label second">DESTINATION</label><div class="location-field"><span class="pin end-pin">●</span><input id="end" value="Apollo Hospitals, Jubilee Hills" autocomplete="off"><button class="search-btn" id="search" aria-label="Find route">↗</button></div><div id="suggestions" class="suggestions"></div></section>
+<div class="algorithm-head"><span class="field-label">ROUTING ALGORITHM</span><span class="field-label muted">COMPARE METHODS</span></div><div class="algorithm-grid"><button class="algorithm active" data-alg="astar"><b>A*</b><small>OPTIMAL</small></button><button class="algorithm" data-alg="greedy"><b>Greedy</b><small>FASTEST</small></button><button class="algorithm" data-alg="bfs"><b>BFS</b><small>UNWEIGHTED</small></button><button class="algorithm" data-alg="dfs"><b>DFS</b><small>EXPLORATORY</small></button></div>
+<button class="route-btn" id="route"><span>Calculate route</span><span>→</span></button><div id="error" class="error"></div><section id="results" class="results hidden"><div class="result-top"><div><span class="field-label muted">ROUTE DISTANCE</span><strong id="distance">—</strong></div><div class="metric"><span class="field-label muted">EST. DRIVE</span><strong id="duration">—</strong></div></div><div class="result-foot"><span><i></i> Route ready</span><span id="meta">—</span></div></section><div class="panel-bottom"><span>REAL STREET DATA</span><span>OPENSTREETMAP ↗</span></div></aside>
+<section class="map-area"><div id="map"></div><div class="map-badge"><span class="live-dot"></span> HYDERABAD ROAD NETWORK</div><div class="map-legend"><span><i class="legend-start"></i>Start</span><span><i class="legend-end"></i>Destination</span><span><i class="legend-route"></i>Route</span></div><button id="fit" class="fit">⌖ <span>Recenter</span></button><div class="attribution">© OpenStreetMap contributors · Routing graph from OSM</div></section></main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="app.js"></script>
+</body></html>
